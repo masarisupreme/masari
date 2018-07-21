@@ -105,9 +105,10 @@ namespace cryptonote
 
     txin_gen in;
     in.height = height;
+    uint64_t cal_height = height;
 
     uint64_t block_reward;
-    if(!get_block_reward(median_size, current_block_size, already_generated_coins, block_reward, hard_fork_version))
+    if(!get_block_reward(median_size, current_block_size, already_generated_coins, block_reward, hard_fork_version, cal_height))
     {
       LOG_PRINT_L0("Block is too big");
       return false;
