@@ -54,11 +54,6 @@
 
 #define CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT_V6           60*5
 
-// MONEY_SUPPLY - total number coins to be generated
-#define MONEY_SUPPLY                                    ((uint64_t)(-1))
-#define EMISSION_SPEED_FACTOR_PER_MINUTE                (20)
-#define FINAL_SUBSIDY_PER_MINUTE                        ((uint64_t)300000000000) // 3 * pow(10, 11)
-
 #define CRYPTONOTE_REWARD_BLOCKS_WINDOW                 100
 #define CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1    300000
 #define CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2    CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1
@@ -66,6 +61,14 @@
 #define CRYPTONOTE_DISPLAY_DECIMAL_POINT                12
 // COIN - number of smallest units in one coin
 #define COIN                                            ((uint64_t)1000000000000) // pow(10, 12)
+// MONEY_SUPPLY - total number coins to be generated
+#define MONEY_SUPPLY                                    ((uint64_t)(-1))
+// TOKENS - total number tokens to be generated
+#define TOKENS                                          ((uint64_t)(16918622000000000000))
+#define EMISSION_SPEED_FACTOR_PER_MINUTE                (20)
+#define FINAL_SUBSIDY_PER_MINUTE                        ((uint64_t)150000000000) // 15 * pow(10, 10)  || .15 MSRP
+// INSTAMINE - total number coins to be instamined
+#define DEVMINE                                         ((uint64_t)2000000000000000000) // 2,000,000 MSRP
 
 #define DEFAULT_MIXIN                                   12
 #define DEFAULT_RINGSIZE                                DEFAULT_MIXIN + 1
