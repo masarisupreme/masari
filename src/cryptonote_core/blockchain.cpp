@@ -3392,7 +3392,23 @@ leave:
   // coins will eventually exceed MONEY_SUPPLY and overflow a uint64. To prevent overflow, cap already_generated_coins
   // at MONEY_SUPPLY. already_generated_coins is only used to compute the block subsidy and MONEY_SUPPLY yields a
   // subsidy of 0 under the base formula and therefore the minimum subsidy >0 in the tail state.
-  already_generated_coins = base_reward < (MONEY_SUPPLY-already_generated_coins) ? already_generated_coins + base_reward : MONEY_SUPPLY;
+  // TESTNET, STAGENET and MAINNET
+  uint8_t version = get_current_hard_fork_version();
+  if (m_nettype == TESTNET)
+  {
+    uint64_t TOKEN_SUPPLY = version <= 7 ? MONEY_SUPPLY : TOKENS;
+    already_generated_coins = base_reward < (TOKEN_SUPPLY-already_generated_coins) ? already_generated_coins + base_reward : TOKEN_SUPPLY ;
+  }
+  else if (m_nettype == STAGENET)
+  {
+    uint64_t TOKEN_SUPPLY = version <= 7 ? MONEY_SUPPLY : TOKENS;
+    already_generated_coins = base_reward < (TOKEN_SUPPLY-already_generated_coins) ? already_generated_coins + base_reward : TOKEN_SUPPLY ;
+  }
+  else
+  {
+    uint64_t TOKEN_SUPPLY = version <= 7 ? MONEY_SUPPLY : TOKENS;
+    already_generated_coins = base_reward < (TOKEN_SUPPLY-already_generated_coins) ? already_generated_coins + base_reward : TOKEN_SUPPLY ;
+  }
   if(m_db->height())
     cumulative_difficulty += m_db->get_block_cumulative_difficulty(m_db->height() - 1);
 
