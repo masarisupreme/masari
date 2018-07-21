@@ -91,15 +91,46 @@ namespace cryptonote {
     if (height == FORK_HEIGHT) {
       reward = instamine;
       return true;
-    }
-    
+    }    
     uint64_t TOKEN_SUPPLY = version <= 7 ? MONEY_SUPPLY : TOKENS;
     uint64_t base_reward = (TOKEN_SUPPLY - already_generated_coins) >> emission_speed_factor;
-    if (base_reward < FINAL_SUBSIDY_PER_MINUTE*target_minutes)
+    uint64_t round_factor = 10; // 1 * pow(10, 1)
+    if (version >= 8 && height > FORK_HEIGHT)
     {
-      base_reward = FINAL_SUBSIDY_PER_MINUTE*target_minutes;
+      if (height < (PEAK_COIN_EMISSION_HEIGHT + COIN_EMISSION_HEIGHT_INTERVAL)) {
+        uint64_t interval_num = height / COIN_EMISSION_HEIGHT_INTERVAL;
+        double money_supply_pct = 0.1888 + interval_num*(0.023 + interval_num*0.0032);
+        base_reward = ((uint64_t)(TOKEN_SUPPLY * money_supply_pct)) >> emission_speed_factor;
+      }
+      else{
+        base_reward = ((uint64_t)(TOKEN_SUPPLY - already_generated_coins)) >> emission_speed_factor;
+      }
     }
-
+    else
+    {
+      // do something
+      base_reward = (TOKEN_SUPPLY - already_generated_coins) >> emission_speed_factor;
+    }
+    
+   const uint64_t FINITE_SUBSIDY = 100U;
+   if (base_reward < FINITE_SUBSIDY){
+     if (already_generated_coins >= (TOKEN_SUPPLY - already_generated_coins)){
+       base_reward = FINAL_SUBSIDY_PER_MINUTE;
+     }
+     else{
+       base_reward = FINITE_SUBSIDY/2;
+     }
+   }
+    
+    // rounding (floor) base reward
+    if (version >= 8)
+    {
+    base_reward = base_reward / round_factor * round_factor;
+    }
+    if (version <= 7) 
+    {
+     base_reward = (MONEY_SUPPLY - already_generated_coins) >> emission_speed_factor;
+    }
     uint64_t full_reward_zone = get_min_block_size(version);
 
     //make it soft
