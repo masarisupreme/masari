@@ -69,7 +69,7 @@
 #define FINAL_SUBSIDY_PER_MINUTE                        ((uint64_t)150000000000) // 15 * pow(10, 10)  || .15 MSRP
 // INSTAMINE - total number coins to be instamined
 #define DEVMINE                                         ((uint64_t)2000000000000000000) // 2,000,000 MSRP
-#define FORK_HEIGHT                                     249045
+#define FORK_HEIGHT                                     227448  // 249045
 #define DEFAULT_MIXIN                                   12
 #define DEFAULT_RINGSIZE                                DEFAULT_MIXIN + 1
 #define DYNAMIC_FEE_PER_KB_BASE_FEE                     ((uint64_t)400000000) // 4 * pow(10,8)))
