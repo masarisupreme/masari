@@ -62,6 +62,15 @@
 
 #define FIND_BLOCKCHAIN_SUPPLEMENT_MAX_SIZE (100*1024*1024) // 100 MB
 
+#define MAINNET_HARDFORK_V1_HEIGHT ((uint64_t)(1)) // MAINNET v1 hard fork 
+#define MAINNET_HARDFORK_V2_HEIGHT ((uint64_t)(28000)) // MAINNET v2 hard fork 
+#define MAINNET_HARDFORK_V3_HEIGHT ((uint64_t)(63500)) // MAINNET v3 hard fork 
+#define MAINNET_HARDFORK_V4_HEIGHT ((uint64_t)(70000)) // MAINNET v4 hard fork 
+#define MAINNET_HARDFORK_V5_HEIGHT ((uint64_t)(170000)) // MAINNET v5 hard fork
+#define MAINNET_HARDFORK_V6_HEIGHT ((uint64_t)(172500)) // MAINNET v6 hard fork 
+#define MAINNET_HARDFORK_V7_HEIGHT ((uint64_t)(204000)) // MAINNET v7 hard fork  
+#define MAINNET_HARDFORK_V8_HEIGHT ((uint64_t)(227448)) // MAINNET v8 hard fork  
+
 using namespace crypto;
 
 //#include "serialization/json_archive.h"
@@ -96,7 +105,8 @@ static const struct {
   { 4, 70000, 0, 1513136914 },
   { 5, 170000, 0, 1525150523},
   { 6, 172500, 0, 1525504168},
-  { 7, 204000, 0, 1529361270}
+  { 7, 204000, 0, 1529361270},
+  { 8, 227448, 0, 1532208007}
 };
 
 static const struct {
@@ -776,6 +786,10 @@ difficulty_type Blockchain::get_difficulty_for_next_block()
     difficulty_blocks_count = DIFFICULTY_BLOCKS_COUNT_V3;
   } else {
     difficulty_blocks_count = DIFFICULTY_BLOCKS_COUNT_V6;
+  }
+  if ((uint64_t)height >= MAINNET_HARDFORK_V8_HEIGHT - 3 && (uint64_t)height <= MAINNET_HARDFORK_V8_HEIGHT + (uint64_t)difficulty_blocks_count)
+  {
+  return (difficulty_type) 100;
   }
 
   // ND: Speedup
