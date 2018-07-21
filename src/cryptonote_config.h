@@ -64,7 +64,7 @@
 // MONEY_SUPPLY - total number coins to be generated
 #define MONEY_SUPPLY                                    ((uint64_t)(-1))
 // TOKENS - total number tokens to be generated
-#define TOKENS                                          ((uint64_t)16918622000000000000)
+#define TOKENS                                          ((uint64_t) (COIN * (1691862 * 16 * 120) / DIFFICULTY_TARGET))
 #define EMISSION_SPEED_FACTOR_PER_MINUTE                (20)
 #define FINAL_SUBSIDY_PER_MINUTE                        ((uint64_t)150000000000) // 15 * pow(10, 10)  || .15 MSRP
 // INSTAMINE - total number coins to be instamined
