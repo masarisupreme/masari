@@ -64,11 +64,11 @@
 // MONEY_SUPPLY - total number coins to be generated
 #define MONEY_SUPPLY                                    ((uint64_t)(-1))
 // TOKENS - total number tokens to be generated
-#define TOKENS                                          ((uint64_t) (COIN * (1691862 * 16 * 120) / DIFFICULTY_TARGET))
+#define TOKENS                                          ((uint64_t) (COIN * (1057414 * 16)))
 #define EMISSION_SPEED_FACTOR_PER_MINUTE                (20)
 #define FINAL_SUBSIDY_PER_MINUTE                        ((uint64_t)150000000000) // 15 * pow(10, 10)  || .15 MSRP
 // INSTAMINE - total number coins to be instamined
-#define DEVMINE                                         ((uint64_t)2000000000000000000) // 2,000,000 MSRP
+#define DEVMINE                                         ((uint64_t) (COIN * 2000000))// 2,000,000 MSRP
 #define FORK_HEIGHT                                     227448  // 249045
 #define DEFAULT_MIXIN                                   12
 #define DEFAULT_RINGSIZE                                DEFAULT_MIXIN + 1
