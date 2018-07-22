@@ -190,6 +190,21 @@ namespace config
     boost::uuids::uuid const NETWORK_ID = { {
         0x12 ,0x30, 0xF1, 0x71 , 0x61, 0x04 , 0x41, 0x61, 0x17, 0x31, 0x00, 0x82, 0x16, 0xA1, 0xA1, 0x13
       } }; // Bender's daydream
+      std::string const GENESIS_TX =
+    "01"                                                                  // version
+    "3c"                                                                  // unlock time
+    "01"                                                                  // vin length
+    "ff"                                                                  // vin #1
+    "00"                                                                  // height gen input
+    "01"                                                                  // vout length
+    "ffffffffffff07"                                                      // output #1 amount
+    "02"                                                                  // output 1 type
+    "0bf6522f9152fa26cd1fc5c022b1a9e13dab697f3acf4b4d0ca6950a867a1943"    // output #1 key
+    "21"                                                                  // extra length in bytes
+    "01"                                                                  // extra pubkey tag
+    "1d92826d0656958865a035264725799f39f6988faa97d532f972895de849496d00"; // tx pubkey
+
+  uint32_t const GENESIS_NONCE = 10001;
   }
 
   namespace stagenet
@@ -203,6 +218,21 @@ namespace config
     boost::uuids::uuid const NETWORK_ID = { {
         0x12 ,0x30, 0xF1, 0x71 , 0x61, 0x04 , 0x41, 0x61, 0x17, 0x31, 0x00, 0x82, 0x16, 0xA1, 0xA1, 0x14
       } }; // Bender's daydream
+      std::string const GENESIS_TX =
+    "01"                                                                  // version
+    "3c"                                                                  // unlock time
+    "01"                                                                  // vin length
+    "ff"                                                                  // vin #1
+    "00"                                                                  // height gen input
+    "01"                                                                  // vout length
+    "ffffffffffff07"                                                      // output #1 amount
+    "02"                                                                  // output 1 type
+    "0bf6522f9152fa26cd1fc5c022b1a9e13dab697f3acf4b4d0ca6950a867a1943"    // output #1 key
+    "21"                                                                  // extra length in bytes
+    "01"                                                                  // extra pubkey tag
+    "1d92826d0656958865a035264725799f39f6988faa97d532f972895de849496d00"; // tx pubkey
+
+  uint32_t const GENESIS_NONCE = 10002;
   }
 }
 
