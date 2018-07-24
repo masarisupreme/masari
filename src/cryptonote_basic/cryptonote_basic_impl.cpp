@@ -87,29 +87,31 @@ namespace cryptonote {
     static_assert(DIFFICULTY_TARGET % 60 == 0,"difficulty targets must be a multiple of 60");
     const int target_minutes = DIFFICULTY_TARGET / 60;
     const int emission_speed_factor = EMISSION_SPEED_FACTOR_PER_MINUTE - (target_minutes-1);
+    const int emission_speed_factor_v2 = EMISSION_SPEED_FACTOR_PER_MINUTE - (target_minutes);
+    const int emission_speed = version <=8 ? emission_speed_factor : emission_speed_factor_v2;
     const uint64_t instamine = DEVMINE;
     if (height == FORK_HEIGHT) {
       reward = instamine;
       return true;
     }    
     uint64_t TOKEN_SUPPLY = version <= 7 ? MONEY_SUPPLY : TOKENS;
-    uint64_t base_reward = (TOKEN_SUPPLY - already_generated_coins) >> emission_speed_factor;
+    uint64_t base_reward = (TOKEN_SUPPLY - already_generated_coins) >> emission_speed;
     uint64_t round_factor = 10; // 1 * pow(10, 1)
     if (version >= 8 && height > FORK_HEIGHT)
     {
       if (height < (PEAK_COIN_EMISSION_HEIGHT + COIN_EMISSION_HEIGHT_INTERVAL)) {
         uint64_t interval_num = height / COIN_EMISSION_HEIGHT_INTERVAL;
         double money_supply_pct = 0.1888 + interval_num*(0.023 + interval_num*0.0032);
-        base_reward = ((uint64_t)(TOKEN_SUPPLY * money_supply_pct)) >> emission_speed_factor;
+        base_reward = ((uint64_t)(TOKEN_SUPPLY * money_supply_pct)) >> emission_speed;
       }
       else{
-        base_reward = ((uint64_t)(TOKEN_SUPPLY - already_generated_coins)) >> emission_speed_factor;
+        base_reward = ((uint64_t)(TOKEN_SUPPLY - already_generated_coins)) >> emission_speed;
       }
     }
     else
     {
       // do something
-      base_reward = (TOKEN_SUPPLY - already_generated_coins) >> emission_speed_factor;
+      base_reward = (TOKEN_SUPPLY - already_generated_coins) >> emission_speed;
     }
     
    const uint64_t FINITE_SUBSIDY = 100U;
@@ -129,7 +131,7 @@ namespace cryptonote {
     }
     if (version <= 7) 
     {
-     base_reward = (MONEY_SUPPLY - already_generated_coins) >> emission_speed_factor;
+     base_reward = (MONEY_SUPPLY - already_generated_coins) >> emission_speed;
     }
     uint64_t full_reward_zone = get_min_block_size(version);
 
