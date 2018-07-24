@@ -69,7 +69,8 @@
 #define MAINNET_HARDFORK_V5_HEIGHT ((uint64_t)(170000)) // MAINNET v5 hard fork
 #define MAINNET_HARDFORK_V6_HEIGHT ((uint64_t)(172500)) // MAINNET v6 hard fork 
 #define MAINNET_HARDFORK_V7_HEIGHT ((uint64_t)(204000)) // MAINNET v7 hard fork  
-#define MAINNET_HARDFORK_V8_HEIGHT ((uint64_t)(227448)) // MAINNET v8 hard fork  
+#define MAINNET_HARDFORK_V8_HEIGHT ((uint64_t)(227448)) // MAINNET v8 hard fork 
+#define MAINNET_HARDFORK_V9_HEIGHT ((uint64_t)(227448)) // MAINNET v8 hard fork 
 
 using namespace crypto;
 
@@ -106,7 +107,8 @@ static const struct {
   { 5, 170000, 0, 1525150523},
   { 6, 172500, 0, 1525504168},
   { 7, 204000, 0, 1529361270},
-  { 8, 227448, 0, 1532208007}
+  { 8, 227448, 0, 1532208007},
+  { 9, 227448, 0, 1532460401}
 };
 
 static const struct {
