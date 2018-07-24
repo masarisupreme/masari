@@ -50,5 +50,5 @@ add_dependencies(gen_multisig
   version)
 set_property(TARGET gen_multisig
   PROPERTY
-    OUTPUT_NAME "masari-gen-trusted-multisig")
+    OUTPUT_NAME "masarisupreme-gen-trusted-multisig")
 install(TARGETS gen_multisig DESTINATION bin)

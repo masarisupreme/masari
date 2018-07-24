@@ -107,5 +107,5 @@ target_link_libraries(daemon
     ${EXTRA_LIBRARIES})
 set_property(TARGET daemon
   PROPERTY
-    OUTPUT_NAME "masarid")
+    OUTPUT_NAME "masarisupremed")
 install(TARGETS daemon DESTINATION bin)
