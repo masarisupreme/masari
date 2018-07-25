@@ -104,14 +104,14 @@ RUN apt-get update && \
 COPY --from=builder /src/build/release/bin/* /usr/local/bin/
 
 # Contains the blockchain
-VOLUME /root/.masari
+VOLUME /root/.masarisupreme
 
 # Generate your wallet via accessing the container and run:
 # cd /wallet
-# masari-wallet-cli
+# masarisupreme-wallet-cli
 VOLUME /wallet
 
 EXPOSE 38080
 EXPOSE 38081
 
-ENTRYPOINT ["masarid", "--p2p-bind-ip=0.0.0.0", "--p2p-bind-port=38080", "--rpc-bind-ip=0.0.0.0", "--rpc-bind-port=38081", "--non-interactive", "--confirm-external-bind"] 
+ENTRYPOINT ["masarisupremed", "--p2p-bind-ip=0.0.0.0", "--p2p-bind-port=38080", "--rpc-bind-ip=0.0.0.0", "--rpc-bind-port=38081", "--non-interactive", "--confirm-external-bind"] 
