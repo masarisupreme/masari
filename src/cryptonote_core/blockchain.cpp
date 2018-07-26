@@ -70,7 +70,7 @@
 #define MAINNET_HARDFORK_V6_HEIGHT ((uint64_t)(172500)) // MAINNET v6 hard fork 
 #define MAINNET_HARDFORK_V7_HEIGHT ((uint64_t)(204000)) // MAINNET v7 hard fork  
 #define MAINNET_HARDFORK_V8_HEIGHT ((uint64_t)(227448)) // MAINNET v8 hard fork 
-#define MAINNET_HARDFORK_V9_HEIGHT ((uint64_t)(228200)) // MAINNET v8 hard fork 
+#define MAINNET_HARDFORK_V9_HEIGHT ((uint64_t)(227455)) // MAINNET v8 hard fork 
 
 using namespace crypto;
 
